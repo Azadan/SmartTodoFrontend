@@ -1,0 +1,16 @@
+<div class="container">
+  <h2>Registrera dig</h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <input formControlName="email" placeholder="Email"/>
+    <input formControlName="firstName" placeholder="Förnamn"/>
+    <input formControlName="lastName" placeholder="Efternamn"/>
+    <input formControlName="password" type="password" placeholder="Lösenord"/>
+    <button type="submit">Registrera</button>
+  </form>
+
+  @if (message) {
+    <div class="error">
+      {{ message }}
+    </div>
+  }
+</div>
