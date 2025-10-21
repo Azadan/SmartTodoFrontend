@@ -7,6 +7,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
+  //ÄNDRA VID PROD
   private apiUrl: string = 'http://localhost:8080/api/v1/users';
   private http: HttpClient = inject(HttpClient);
 
