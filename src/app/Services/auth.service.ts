@@ -63,7 +63,7 @@ export class AuthService {
           console.log('login response', response);
           if (response) {
             this.storeToken(response);
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['/userDashboard']);
           }
         }),
         catchError(error => {
