@@ -1,0 +1,26 @@
+<section class="todo-list">
+  @if (message) {
+    <p class="status">{{ message }}</p>
+  }
+
+  @let items = todos() ;
+
+  @if (items.length) {
+    <ul role="list">
+      @for (t of items; track t.todoId) {
+        <li>
+          <label>
+            <input
+              type="checkbox"
+              [checked]="t.isComplete"
+              (change)="onToggle(t)" />
+            <span [class.complete]="t.isComplete">{{ t.title }}</span>
+          </label>
+          <p class="desc">{{ t.description }}</p>
+        </li>
+      }
+    </ul>
+  } @else {
+    <p>Du har inga habits att se över ännu</p>
+  }
+</section>

@@ -1,0 +1,28 @@
+<div class="container">
+  <h2>Ska en ny HABIT</h2>
+  <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="title">Titel:</label>
+      <input formControlName="title" id="title" placeholder="Ange titel för din HABIT" />
+    </div>
+
+    <div class="form-group">
+      <label for="description">Innehåll:</label>
+      <textarea
+        formControlName="description"
+        id="description"
+        placeholder="Beskriv din hur du ska göra detta till en HABIT..."
+        rows="5">
+      </textarea>
+    </div>
+
+    <button type="submit">Skapa HABIT</button>
+
+  </form>
+
+  @if (message) {
+    <div class="error">
+      {{ message }}
+    </div>
+  }
+</div>
