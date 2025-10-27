@@ -5,6 +5,7 @@ import {JwtHelperService} from '@auth0/angular-jwt';
 import {UserModel} from '../Models/user.model';
 import {authRequest, authResponse} from '../Models/auth.model';
 import {catchError, Observable, of, tap} from 'rxjs';
+import {RxStomp} from '@stomp/rx-stomp';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class AuthService {
   // readonly innebär att värdet inte kan ändras efter initialisering
   private readonly http: HttpClient = inject(HttpClient);
   readonly router: Router = inject(Router);
+  private readonly rxStomp: RxStomp = inject(RxStomp);
 
   /*
    *JwtHelperService används för att hantera och validera JWT-tokens.
@@ -63,6 +65,7 @@ export class AuthService {
           console.log('login response', response);
           if (response) {
             this.storeToken(response);
+            this.rxStomp.deactivate().then(() => this.rxStomp.activate());
             this.router.navigate(['/userDashboard']);
           }
         }),
