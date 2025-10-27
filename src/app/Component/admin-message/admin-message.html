@@ -1,0 +1,32 @@
+<section class="container">
+  <ul>
+    @for (m of messages(); track $index) {
+      <li>
+        <strong>{{ m.from || 'User' }}:</strong> {{ m.text }}
+      </li>
+    }
+  </ul>
+
+  <form [formGroup]="form" (ngSubmit)="send()">
+    <input
+    type="email"
+    formControlName="email"
+    placeholder="Användarens e-post"
+    />
+    <input
+    type="text"
+    formControlName="text"
+    placeholder="Skriv ett svar till kunden"
+    />
+    <button type="submit" [disabled]="form.invalid || form.pending">
+      Skicka
+    </button>
+
+    @if (email.invalid && email.touched) {
+      <small>En giligt e-post krävs</small>
+    }
+    @if (text.invalid && text.touched) {
+      <small>Ett meddelande krävs (max 500 tecken)</small>
+    }
+  </form>
+</section>
