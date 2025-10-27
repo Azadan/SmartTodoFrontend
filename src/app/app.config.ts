@@ -10,6 +10,8 @@ import { routes } from './app.routes';
 import {provideHttpClient, withInterceptors} from '@angular/common/http';
 import {AuthInterceptor} from './Interceptor/auth-interceptor';
 import {JwtModule} from '@auth0/angular-jwt';
+import {RxStompServiceFactory} from './Services/rx-stomp.service-factory';
+import {RxStomp} from '@stomp/rx-stomp';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -21,6 +23,10 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideHttpClient(withInterceptors([AuthInterceptor])),
+    {
+      provide: RxStomp,
+      useFactory: RxStompServiceFactory,
+    },
     importProvidersFrom(
       JwtModule.forRoot({
         config: {

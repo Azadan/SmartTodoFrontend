@@ -1,0 +1,30 @@
+<section class="container">
+  <ul>
+    @for (m of messages(); track $index) {
+      <li>
+        <strong>{{ m.from || 'Admin' }}:</strong> {{ m.text }}
+      </li>
+    }
+  </ul>
+
+  <form [formGroup]="form" (ngSubmit)="send()">
+    <input
+      type="text"
+      formControlName="text"
+      placeholder="Skriv ett meddelande..."
+      class="flex-1 border rounded p-2"
+    />
+    <button
+      type="submit"
+      [disabled]="form.invalid || form.pending"
+    >
+      Skicka
+    </button>
+  </form>
+
+  @if (text.invalid && text.touched) {
+    <small>
+      Ett meddelande krävs (max 500 tecken).
+    </small>
+  }
+</section>
