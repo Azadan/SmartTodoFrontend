@@ -12,6 +12,7 @@ import {AuthInterceptor} from './Interceptor/auth-interceptor';
 import {JwtModule} from '@auth0/angular-jwt';
 import {RxStompServiceFactory} from './Services/rx-stomp.service-factory';
 import {RxStomp} from '@stomp/rx-stomp';
+import {provideNgxStripe} from 'ngx-stripe';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -23,6 +24,8 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideHttpClient(withInterceptors([AuthInterceptor])),
+    provideNgxStripe('pk_test_51R1WwyPoXXCiJQgyVtclmvxl8DAYt6fUlu6PEfyk9jCAzUYFfEfE1thB7cZFj8SIqumBUhy7t8nH3TRv25uwfb56003IZEXoXm'),
+
     {
       provide: RxStomp,
       useFactory: RxStompServiceFactory,
