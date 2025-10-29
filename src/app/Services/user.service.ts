@@ -22,4 +22,8 @@ export class UserService {
   register(userData: CreateUserRequest) : Observable<ApiResponse<UserModel>> {
     return this.http.post<ApiResponse<UserModel>>(`${this.apiUrl}/register`, userData);
   }
+
+  getMe(): Observable<ApiResponse<UserModel>> {
+    return this.http.get<ApiResponse<UserModel>>(`${this.apiUrl}/getLoggedInUser`);
+  }
 }
