@@ -39,8 +39,6 @@ export class CreateTodo {
     this.todoService.create(todoData).subscribe({
       next: (response) => {
         this.message = "En habit är skapad skapad!";
-        // TA BORT VID PROD
-        console.log(response);
         this.createForm.reset();
       },
       error: (error) => {

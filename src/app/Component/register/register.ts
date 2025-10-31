@@ -45,8 +45,7 @@ export class Register {
         password: this.form.value.password!
       };
 
-      //TA BORT VID PROD
-      console.log(userData);
+
 
 
       //Åkallar våran service för att registrera användaren
@@ -54,8 +53,6 @@ export class Register {
         next: (response: ApiResponse<UserModel>) => {
           if (response.success) {
             this.message = 'Användare skapad!';
-            //TA BORT VID PROD
-            console.log(response);
             setTimeout(() => {
               this.router.navigate(['/login']);
             }, 2000);

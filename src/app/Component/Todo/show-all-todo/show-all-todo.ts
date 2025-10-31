@@ -21,8 +21,6 @@ export class ShowAllTodo implements OnInit {
 
   ngOnInit() {
     const userId = this.authService.user()?.userId;
-    //TA BORT VID PROD
-    console.log(userId);
     if (userId != null) {
       this.todoService.load(userId);
     }else {
