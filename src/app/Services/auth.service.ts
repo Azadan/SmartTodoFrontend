@@ -60,8 +60,6 @@ export class AuthService {
         // I detta fall är sid-effekten att lagra token och navigera
         // Och det emitterade värdet är själva inloggningssvaret
         tap(response => {
-          // TA BORT VID PROD
-          console.log('login response', response);
           if (response) {
             this.storeToken(response);
             this.rxStomp.deactivate().then(() => this.rxStomp.activate());
