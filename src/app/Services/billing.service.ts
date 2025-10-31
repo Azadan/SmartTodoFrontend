@@ -9,10 +9,10 @@ import {catchError, map, of, throwError} from 'rxjs';
   providedIn: 'root'
 })
 export class BillingService {
-  private apiUrl: string = 'http://localhost:8080/api/v1/billing';
+  private apiUrl: string = 'https://orca-app-htew6.ondigitalocean.app/api/v1/billing';
   private http: HttpClient = inject(HttpClient);
   private stripeService : StripeService = inject(StripeService);
-  private readonly endpoint = `http://localhost:8080/api/v1/billing/create-checkout-session`;
+  private readonly endpoint = `https://orca-app-htew6.ondigitalocean.app/api/v1/billing/create-checkout-session`;
 
 
   checkout() {

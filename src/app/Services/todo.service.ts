@@ -8,8 +8,7 @@ import {map, tap} from 'rxjs';
 })
 export class TodoService {
 
-  //ÄNDRA VID PROD
-  private apiUrl: string = 'http://localhost:8080/api/v1/todos';
+  private apiUrl: string = 'https://orca-app-htew6.ondigitalocean.app/api/v1/todos';
   private http: HttpClient = inject(HttpClient);
 
   readonly todos: WritableSignal<Todo[]> = signal<Todo[]>([]);

@@ -22,8 +22,7 @@ export class AuthService {
    */
   private readonly jwtHelper: JwtHelperService = inject(JwtHelperService);
 
-  //ÄNDRA VID PROD
-  private readonly apiUrl = 'http://localhost:8080/api/v1/auth';
+  private readonly apiUrl = 'https://orca-app-htew6.ondigitalocean.app/api/v1/auth';
 
   // En signal som håller reda på den autentiserade användaren
   get user(): WritableSignal<UserModel | null> {
@@ -86,4 +85,19 @@ export class AuthService {
     this.user.set(null);
     this.router.navigate(['/login']);
   }
+
+  getCurrentUser(): UserModel | null {
+    const userJson = localStorage.getItem('user');
+    return userJson ? JSON.parse(userJson) as UserModel : null;
+  }
+
+  isAdmin(): boolean {
+    const user = this.getCurrentUser();
+    return !!user?.isAdmin;
+  }
+
+  isStandardUser(): boolean {
+      const user = this.getCurrentUser();
+      return !!user && !user.isAdmin;
+    }
 }

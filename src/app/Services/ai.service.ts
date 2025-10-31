@@ -8,7 +8,7 @@ import {AiResponse} from '../Models/ai-chat.model';
 })
 export class AiService {
 
-  private apiUrl: string = 'http://localhost:8080/api/v1/ai';
+  private apiUrl: string = 'https://orca-app-htew6.ondigitalocean.app/api/v1/ai';
   private http: HttpClient = inject(HttpClient);
 
   suggestDescription(message: string): Observable<AiResponse> {

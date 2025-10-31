@@ -2,8 +2,7 @@ import { RxStomp, RxStompConfig } from '@stomp/rx-stomp';
 import SockJS from 'sockjs-client';
 
 export const StompConfig: RxStompConfig = {
-  // ÄNDRA VID PROD
-  webSocketFactory: () => new SockJS('http://localhost:8080/ws'),
+  webSocketFactory: () => new SockJS('https://orca-app-htew6.ondigitalocean.app/ws'),
   heartbeatIncoming: 0,
   heartbeatOutgoing: 20000,
   reconnectDelay: 200000,
