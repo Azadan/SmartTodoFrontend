@@ -1,7 +1,7 @@
 import {inject, Injectable} from '@angular/core';
 import {IMessage, RxStomp} from '@stomp/rx-stomp';
 import {ChatMessageRequest, ChatMessageResponse} from '../Models/message.model';
-import {map, Observable, Subscription} from 'rxjs';
+import {map, Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

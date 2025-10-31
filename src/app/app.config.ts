@@ -34,8 +34,7 @@ export const appConfig: ApplicationConfig = {
       JwtModule.forRoot({
         config: {
           tokenGetter: tokenGetter,
-          //ÄNDRA VID PROD
-          allowedDomains: ['localhost:8080'], // Min backend URL
+          allowedDomains: ['localhost:8080', 'https://orca-app-htew6.ondigitalocean.app'], // Min backend URL
           disallowedRoutes: ['http://localhost:8080/api/v1/user/register', 'http://localhost:8080/api/v1/auth/login'] // Exkludera registrering från JWT
         }
       })
