@@ -2,7 +2,7 @@
   "name": "smart-todo-frontend",
   "version": "0.0.0",
   "scripts": {
-    "start": "serve dist/SmartTodoFrontend --single --listen tcp://0.0.0.0:${PORT:-8080}",
+    "start": "serve dist/SmartTodoFrontend/browser --single --listen tcp://0.0.0.0:${PORT:-8080}",
     "build": "ng build --configuration production",
     "ng": "ng",
     "watch": "ng build --watch --configuration development",
