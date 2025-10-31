@@ -1,59 +1,63 @@
 # SmartTodoFrontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.3.
+SmartTodoFrontend är ett Angular 20-baserat webgränssnitt för SmartTodo-plattformen. Applikationen låter användare registrera sig, logga in, hantera todos, uppgradera sin plan via Stripe och kommunicera med administratörer via realtidschatt. Projektet pratar med backend-API:t som hostas på DigitalOcean.
 
-## Development server
+## Funktioner
 
-To start a local development server, run:
+- **Autentisering & roller**  
+  Inloggning, registrering och JWT-hantering via `AuthService`. Rollkontroll sker med `role.guard.ts`.
 
-```bash
-ng serve
-```
+- **Todo-hantering**  
+  Skapa, lista och toggla todos via REST-anrop (`TodoService`). Signal-baserad lokal state uppdaterar UI:t.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- **Billing & prenumerationer**  
+  Integrerat Stripe-flöde för uppgradering, avbrutna betalningar och kvitto-vyer (`Billing`-komponenterna).
 
-## Code scaffolding
+- **Administrationspanel**  
+  Separata dashboards för användare och administratörer med rollbaserade vyer.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- **Supportchatt i realtid**  
+  WebSocket/STOMP-integration (`WsService`, `RxStomp`) för meddelanden mellan användare och admin, samt AI-hjälp (`AiService`) för att föreslå todo-beskrivningar.
 
-```bash
-ng generate component component-name
-```
+## Teknisk stack
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- Angular 20, TypeScript 5.9
+- RxJS 7.8 och Angular Signals
+- `@stomp/rx-stomp` och `sockjs-client` för realtid
+- Stripe-integration via `ngx-stripe`
 
-```bash
-ng generate --help
-```
+## Förutsättningar
 
-## Building
+- Node.js 20.x (rekommenderat att låsa versionen via `"engines"` i `package.json`)
+- npm 10+
+- (Valfritt) Angular CLI globalt installerad för lokala verktyg
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Kom igång lokalt
 
 ```bash
-ng test
+git clone https://github.com/Azadan/SmartTodoFrontend.git
+cd SmartTodoFrontend
+npm install
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+Kör utvecklingsservern:
 
 ```bash
-ng e2e
+npm run ng -- serve
+# eller om du föredrar npm scriptet:
+npm start
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Applikationen är tillgänglig på `http://localhost:4200/`. Dev-servern använder filbevakning och hot reload.
 
-## Additional Resources
+## Bygg
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```bash
+npm run build
+```
+
+Bygget hamnar i `dist/SmartTodoFrontend/browser`, vilket är den mapp som ska exponeras i produktion.
+
+## Miljövariabler
+
+Applikationen använder för närvarande hårdkodade URL:er till backend (`https://orca-app-htew6.ondigitalocean.app`). Om du behöver byta miljö, introducera gärna Angulars miljökonfiguration (`src/environments/`) och ersätt direkta URL-strängar.
