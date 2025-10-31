@@ -2,9 +2,9 @@
   "name": "smart-todo-frontend",
   "version": "0.0.0",
   "scripts": {
+    "start": "serve dist/SmartTodoFrontend --single --listen tcp://0.0.0.0:${PORT:-8080}",
+    "build": "ng build --configuration production",
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -34,6 +34,7 @@
     "@types/sockjs-client": "^1.5.4",
     "ngx-stripe": "^20.7.0",
     "rxjs": "~7.8.0",
+    "serve": "^14.2.5",
     "sockjs-client": "^1.6.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
